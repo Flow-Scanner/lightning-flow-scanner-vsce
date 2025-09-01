@@ -33,10 +33,19 @@
     }
 
   </script>
-
   <TailwindWrapper>
     <div class="sb">
     <Banner/>
+    <section class="mt-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded">
+      <div class="bg-red-50 border-l-4 border-red-500 p-2 rounded mb-3">
+        <p class="text-sm font-bold text-red-700 mb-0">
+          Avoid unofficial extensions and disable auto-updates immediately.
+        </p>
+      </div>
+      <p class="ml-5 mb-2 text-sm text-gray-800">
+        Extensions run with your privileges, and if compromised, they can steal CLI tokens, GitHub, NPM, and AWS keys, and even exfiltrate or insert code while Code Builder is in use.
+      </p>
+    </section>
       <nav aria-label="Sidebar">
         <button class="btn btn-blue" on:click={configRules}>
           Configure Rules
@@ -54,14 +63,8 @@
           Documentation
         </button>
       </nav>
-      <div>
-        <p>Support our mission to champion Best Practices by starring ⭐ us on <a href="https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-vsce">GitHub</a></p>
-      </div>
     </div>
-
   </TailwindWrapper>
-
-
   <style>
 
     .sb{

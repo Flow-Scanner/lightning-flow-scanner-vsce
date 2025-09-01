@@ -16,17 +16,47 @@ export default class Commands {
   constructor(private context: vscode.ExtensionContext) {}
 
   get handlers() {
-    return Object.entries({
-      'lightningflowscanner.viewDefaulFlowRules': () =>
-        this.viewDefaulFlowRules(),
-      'lightningflowscanner.configRules': () => this.configRules(),
-      'lightningflowscanner.debugView': () => this.debugView(),
-      'lightningflowscanner.scanFlows': () => this.scanFlows(),
-      'lightningflowscanner.fixFlows': () => this.fixFlows(),
-      'lightningflowscanner.calculateFlowTestCoverage': () =>
-        this.calculateFlowTestCoverage(),
-    });
+  const rawHandlers: Record<string, (...args: any[]) => any> = {
+    'lightningflowscanner.viewDefaulFlowRules': () => this.viewDefaulFlowRules(),
+    'lightningflowscanner.configRules': () => this.configRules(),
+    'lightningflowscanner.debugView': () => this.debugView(),
+    'lightningflowscanner.scanFlows': () => this.scanFlows(),
+    'lightningflowscanner.fixFlows': () => this.fixFlows(),
+    'lightningflowscanner.calculateFlowTestCoverage': () => this.calculateFlowTestCoverage(),
+  };
+
+  return Object.entries(rawHandlers).map(([command, handler]) => {
+    return [
+      command,
+      async (...args: any[]): Promise<any> => {
+        this.checkExtensionAutoUpdate();   // nag before running command
+        return handler(...args);
+      }
+    ] as const;
+  });
+}
+
+private async checkExtensionAutoUpdate() {
+  const config = vscode.workspace.getConfiguration("extensions");
+  const autoUpdate = config.get<boolean>("autoUpdate");
+
+  if (autoUpdate) {
+    const selection = await vscode.window.showWarningMessage(
+      "⚠️ Extension auto-update is enabled. Please disable it.",
+      "Open Settings",
+      "Ignore"
+    );
+
+    if (selection === "Open Settings") {
+      // Open the relevant settings page
+      vscode.commands.executeCommand(
+        "workbench.action.openSettings",
+        "extensions.autoUpdate"
+      );
+    }
+    // If "Ignore" is clicked, we just continue
   }
+}
 
   private viewDefaulFlowRules() {
     RuleOverview.createOrShow(this.context.extensionUri);
