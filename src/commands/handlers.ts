@@ -37,8 +37,9 @@ export default class Commands {
 }
 
 private async checkExtensionAutoUpdate() {
-  const config = vscode.workspace.getConfiguration("extensions");
-  const autoUpdate = config.get<boolean>("autoUpdate");
+  const autoUpdate = vscode.workspace
+    .getConfiguration(undefined, null) // null = global scope
+    .get<boolean>("extensions.autoUpdate", true);
 
   if (autoUpdate) {
     const selection = await vscode.window.showWarningMessage(
@@ -48,13 +49,11 @@ private async checkExtensionAutoUpdate() {
     );
 
     if (selection === "Open Settings") {
-      // Open the relevant settings page
       vscode.commands.executeCommand(
         "workbench.action.openSettings",
         "extensions.autoUpdate"
       );
     }
-    // If "Ignore" is clicked, we just continue
   }
 }
 
