@@ -9,7 +9,7 @@
   },
   "icon": "media/lightningflow.png",
   "description": "A VSCode Extension designed to pinpoint deviations from Industry Best Practices in Salesforce Flows, ensuring standards of business automation excellence.",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "engines": {
     "vscode": "^1.99.1"
   },
