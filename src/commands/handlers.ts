@@ -66,9 +66,8 @@ private async checkExtensionAutoUpdate() {
       await this.ruleConfiguration();
       return;
     }
-    const allRules: core.AdvancedRule[] = [
-      ...core.getBetaRules(),
-      ...core.getRules(),
+    const allRules: core.IRuleDefinition[] = [
+      ...core.getRules()
     ];
     const ruleConfig = { rules: {} };
 

@@ -1,7 +1,6 @@
 import {
   IRulesConfig,
   getRules,
-  getBetaRules,
   AdvancedRule,
 } from 'lightning-flow-scanner-core';
 import * as vsce from 'vscode';
@@ -50,7 +49,6 @@ export class ConfigProvider {
   ): Promise<Configuration> {
     const allRules: Record<string, { severity: string }> = [
       ...getRules(),
-      ...getBetaRules(),
     ].reduce(
       (acc, rule: AdvancedRule) => {
         acc[rule.name] = { severity: 'error' };
