@@ -168,7 +168,7 @@
     "ts-jest": "^29.3.2",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
-    "tsup": "^8.4.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.7.3",
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.6",
