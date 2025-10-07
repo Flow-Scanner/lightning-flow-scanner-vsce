@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://github.com/Flow-Scanner">
-    <img src="media/bannerslim.png" style="width: 55%;" />
+    <img src="media/bannerslim.png" style="width: 41%;" />
   </a>
 </p
 
 ## 🚨 Deprecation Notice
 We’re deeply grateful for the community’s impact with Lightning Flow Scanner! Due to security issues detailed in the [release notes](https://github.com/Flow-Scanner/lightning-flow-scanner-core/releases/tag/v5.1.0), `lightning-flow-scanner-vsce` has been deprecated and unpublished.  
 
-[Lightning Flow Scanner VSX](https://github.com/Flow-Scanner/lightning-flow-scanner-vsx) is a new, fortified fork addressing vulnerabilities and delivering a safer extension. 
+[Lightning Flow Scanner VSX](https://github.com/Flow-Scanner/lightning-flow-scanner-vsx) is a new fork addressing vulnerabilities and delivering a safer extension. 
